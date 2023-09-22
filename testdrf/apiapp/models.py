@@ -9,6 +9,9 @@ class Product(models.Model):
 class ProductAccess(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey('Product', verbose_name='Продукт', on_delete=models.CASCADE)
+    # can_view = models.BooleanField(default=False)  # Флаг, позволяющий просматривать продукт
+    # can_edit = models.BooleanField(default=False)  # Флаг, позволяющий редактировать продукт
+    # can_delete = models.BooleanField(default=False)  # Флаг, позволяющий удалять продукт
 
 
 class Lesson(models.Model):

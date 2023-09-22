@@ -1,10 +1,12 @@
 from rest_framework import generics, viewsets
 from .serializers import *
 from .models import *
+from .permissions import IsOwnerOrReadOnly
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [IsOwnerOrReadOnly]
 
 
 class ProductAccessViewSet(viewsets.ModelViewSet):
