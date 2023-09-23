@@ -5,6 +5,8 @@ class Product(models.Model):
     name = models.CharField(verbose_name='Продукт', max_length=255)
     owner = models.ForeignKey(User, verbose_name='Владелец', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 class ProductAccess(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,6 +22,8 @@ class Lesson(models.Model):
     duration = models.IntegerField(verbose_name='Длительность видео')
     products = models.ForeignKey('Product', verbose_name='Продукт', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 class LessonView(models.Model):
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)

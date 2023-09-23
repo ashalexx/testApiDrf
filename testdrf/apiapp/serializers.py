@@ -7,15 +7,16 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProductAccessSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProductAccess
-        fields = '__all__'
-
-
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
+        fields = '__all__'
+
+
+class ProductAccessSerializer(serializers.ModelSerializer):
+    lessons = LessonSerializer(many=True, read_only=True)
+    class Meta:
+        model = ProductAccess
         fields = '__all__'
 
 
